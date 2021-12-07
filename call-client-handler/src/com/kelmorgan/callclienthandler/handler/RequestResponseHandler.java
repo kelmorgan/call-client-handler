@@ -4,5 +4,5 @@ public interface RequestResponseHandler {
 
     String getHandledRequest(String request);
 
-    String getHandledResponse(String response);
+    String getHandledResponse(String request);
 }
