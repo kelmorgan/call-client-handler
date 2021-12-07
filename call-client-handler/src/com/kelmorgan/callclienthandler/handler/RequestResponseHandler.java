@@ -1,6 +1,8 @@
 package com.kelmorgan.callclienthandler.handler;
 
-public interface RequestResponseHandler {
+import com.kelmorgan.callclienthandler.services.CrudService;
+
+public interface RequestResponseHandler extends CrudService {
 
     String getHandledRequest(String request);
 

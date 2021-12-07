@@ -3,7 +3,6 @@ package com.kelmorgan.callclienthandler.services;
 import com.kelmorgan.callclienthandler.handler.RequestResponseHandler;
 import com.kelmorgan.callclienthandler.utils.Constants;
 import com.kelmorgan.xmlparser.parser.XmlParser;
-import com.newgen.callClient.CallHandler;
 
 public class SoapServiceHandler extends CrudServiceHandler implements RequestResponseHandler {
 
@@ -13,6 +12,9 @@ public class SoapServiceHandler extends CrudServiceHandler implements RequestRes
         super.wiName = wiName;
         super.callType = callType;
         super.endpoint = endpoint;
+    }
+
+    public SoapServiceHandler() {
     }
 
     @Override

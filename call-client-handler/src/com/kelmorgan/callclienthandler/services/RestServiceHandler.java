@@ -6,7 +6,7 @@ import com.kelmorgan.xmlparser.parser.XmlParser;
 
 public class RestServiceHandler extends CrudServiceHandler implements RequestResponseHandler {
 
-    private String appKey;
+
 
     public RestServiceHandler(String processName, String endpoint, String wiName, String callType, String appKey) {
         super.processName = processName;
@@ -30,6 +30,7 @@ public class RestServiceHandler extends CrudServiceHandler implements RequestRes
         stringBuilder.append("<ngOFId>").append(wiName).append("</ngOFId>");
         stringBuilder.append("<callType>").append(callType).append("</callType>");
         stringBuilder.append("<target>").append(endpoint).append("</target>");
+        stringBuilder.append("<AppKey>").append(appKey).append("</AppKey>");
         stringBuilder.append("<user>").append(Constants.user).append("</user>");
         stringBuilder.append("<AppName>").append(Constants.appName).append("</AppName>");
         stringBuilder.append("<AppId>").append(Constants.appId).append("</AppId>");
@@ -52,9 +53,5 @@ public class RestServiceHandler extends CrudServiceHandler implements RequestRes
             return "Exception occurred RestService getHandledResponse method";
         }
         return Constants.apiFailureMessage;
-    }
-
-    public void setAppKey(String appKey) {
-        this.appKey = appKey;
     }
 }
