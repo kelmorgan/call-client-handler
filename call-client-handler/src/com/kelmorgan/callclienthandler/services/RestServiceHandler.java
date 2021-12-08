@@ -13,7 +13,7 @@ public class RestServiceHandler extends CrudServiceHandler implements RequestRes
         super.endpoint = endpoint;
         super.wiName = wiName;
         super.callType = callType;
-        this.appKey = appKey;
+        super.appKey = appKey;
     }
 
     public RestServiceHandler() {
