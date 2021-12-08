@@ -30,10 +30,10 @@ public class RestServiceHandler extends CrudServiceHandler implements RequestRes
         stringBuilder.append("<ngOFId>").append(wiName).append("</ngOFId>");
         stringBuilder.append("<callType>").append(callType).append("</callType>");
         stringBuilder.append("<target>").append(endpoint).append("</target>");
-        stringBuilder.append("<AppKey>").append(appKey).append("</AppKey>");
         stringBuilder.append("<user>").append(Constants.user).append("</user>");
         stringBuilder.append("<AppName>").append(Constants.appName).append("</AppName>");
         stringBuilder.append("<AppId>").append(Constants.appId).append("</AppId>");
+        stringBuilder.append("<AppKey>").append(appKey).append("</AppKey>");
         stringBuilder.append("<ngXmlRequest>").append(request).append("</ngXmlRequest>");
         stringBuilder.append("</message>");
 
