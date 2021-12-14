@@ -4,7 +4,7 @@ import com.kelmorgan.callclienthandler.handler.RequestResponseHandler;
 import com.kelmorgan.callclienthandler.utils.Constants;
 import com.kelmorgan.xmlparser.parser.XmlParser;
 
-public class RestServiceHandler extends CrudServiceHandler implements RequestResponseHandler {
+public class RestServiceHandler extends BaseServiceHandler implements RequestResponseHandler {
 
 
 

@@ -4,7 +4,7 @@ import com.kelmorgan.callclienthandler.handler.RequestResponseHandler;
 import com.kelmorgan.callclienthandler.utils.Constants;
 import com.kelmorgan.xmlparser.parser.XmlParser;
 
-public class SoapServiceHandler extends CrudServiceHandler implements RequestResponseHandler {
+public class SoapServiceHandler extends BaseServiceHandler implements RequestResponseHandler {
 
     public SoapServiceHandler(String processName, String ngMethod, String wiName, String callType, String endpoint) {
         super.processName = processName;

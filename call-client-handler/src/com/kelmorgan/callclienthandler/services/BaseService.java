@@ -1,6 +1,6 @@
 package com.kelmorgan.callclienthandler.services;
 
-public interface CrudService {
+public interface BaseService {
 
     void setProcessName(String processName);
 

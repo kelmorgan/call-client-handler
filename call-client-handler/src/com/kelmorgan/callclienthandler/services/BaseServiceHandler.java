@@ -5,7 +5,7 @@ import com.newgen.callClient.CallHandler;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class CrudServiceHandler implements CrudService {
+public class BaseServiceHandler implements BaseService {
 
     String processName;
     String ngMethod;
