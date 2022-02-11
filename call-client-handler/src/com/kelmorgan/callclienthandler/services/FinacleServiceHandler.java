@@ -4,15 +4,16 @@ import com.kelmorgan.callclienthandler.handler.RequestResponseHandler;
 import com.kelmorgan.callclienthandler.utils.Constants;
 import com.kelmorgan.xmlparser.parser.XmlParser;
 
-public class SoapServiceHandler extends BaseServiceHandler implements RequestResponseHandler {
-    public SoapServiceHandler(String processName, String wiName, String endpoint, String soapAction) {
+public class FinacleServiceHandler extends BaseServiceHandler implements RequestResponseHandler {
+
+    public FinacleServiceHandler(String processName, String appCode, String wiName, String endpoint) {
         super.processName = processName;
+        super.appCode = appCode;
         super.wiName = wiName;
         super.endpoint = endpoint;
-        super.soapAction = soapAction;
     }
 
-    public SoapServiceHandler() {
+    public FinacleServiceHandler() {
     }
 
     @Override
@@ -22,11 +23,10 @@ public class SoapServiceHandler extends BaseServiceHandler implements RequestRes
         stringBuilder.append("<?xml version=\"1.0\" encoding=\"UTF-8\"?>");
         stringBuilder.append("<message>");
         stringBuilder.append("<ngProcess>").append(processName).append("</ngProcess>");
-        stringBuilder.append("<ngMethod>").append(soapAction).append("</ngMethod>");
+        stringBuilder.append("<ngMethod>").append(appCode).append("</ngMethod>");
         stringBuilder.append("<ngOFId>").append(wiName).append("</ngOFId>");
-        stringBuilder.append("<callType>").append("WebService").append("</callType>");
-        stringBuilder.append("<target>").append(endpoint).append("</target>");
-        stringBuilder.append("<AppName>").append(Constants.appName).append("</AppName>");
+        stringBuilder.append("<callType>").append("Finacle").append("</callType>");
+        stringBuilder.append("<EndPointUrl>").append(endpoint).append("</EndPointUrl>");
         stringBuilder.append("<ngXmlRequest>").append(request).append("</ngXmlRequest>");
         stringBuilder.append("</message>");
 
@@ -38,11 +38,11 @@ public class SoapServiceHandler extends BaseServiceHandler implements RequestRes
         try {
             String response = getCallResponse(request);
             if (response.isEmpty()) return "No Response from Call Client";
-            String message = new XmlParser(response).getValueOf("message", true);
+            String message = new XmlParser(response).getValueOf("message",true);
             String mainCode = new XmlParser(message).getValueOf("MainCode");
             if (isSuccess(mainCode)) return handler(message);
-        } catch (Exception e) {
-            return "Exception occurred SoapService getHandledResponse method. Kindly check Call Client Logs.";
+        } catch (Exception e){
+            return "Exception occurred FinacleService getHandledResponse method. Kindly check Call Client Logs. ";
         }
         return Constants.apiFailureMessage;
     }

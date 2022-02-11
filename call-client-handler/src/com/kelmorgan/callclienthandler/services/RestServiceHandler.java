@@ -7,12 +7,10 @@ import com.kelmorgan.xmlparser.parser.XmlParser;
 public class RestServiceHandler extends BaseServiceHandler implements RequestResponseHandler {
 
 
-
-    public RestServiceHandler(String processName, String endpoint, String wiName, String callType, String appKey) {
+    public RestServiceHandler(String processName, String endpoint, String wiName, String appKey) {
         super.processName = processName;
         super.endpoint = endpoint;
         super.wiName = wiName;
-        super.callType = callType;
         super.appKey = appKey;
     }
 
@@ -28,7 +26,7 @@ public class RestServiceHandler extends BaseServiceHandler implements RequestRes
         stringBuilder.append("<ngProcess>").append(processName).append("</ngProcess>");
         stringBuilder.append("<ngMethod>").append(endpoint).append("</ngMethod>");
         stringBuilder.append("<ngOFId>").append(wiName).append("</ngOFId>");
-        stringBuilder.append("<callType>").append(callType).append("</callType>");
+        stringBuilder.append("<callType>").append("WSRestAPI").append("</callType>");
         stringBuilder.append("<target>").append(endpoint).append("</target>");
         stringBuilder.append("<user>").append(Constants.user).append("</user>");
         stringBuilder.append("<AppName>").append(Constants.appName).append("</AppName>");
@@ -46,11 +44,11 @@ public class RestServiceHandler extends BaseServiceHandler implements RequestRes
         try {
             String response = getCallResponse(request);
             if (response.isEmpty()) return "No Response from Call Client";
-            String message = new XmlParser(response).getValueOf("message",true);
+            String message = new XmlParser(response).getValueOf("message", true);
             String mainCode = new XmlParser(message).getValueOf("MainCode");
             if (isSuccess(mainCode)) return new XmlParser(handler(message)).getValueOf("Output");
-        } catch (Exception e){
-            return "Exception occurred RestService getHandledResponse method";
+        } catch (Exception e) {
+            return "Exception occurred RestService getHandledResponse method. Kindly check Call Client Logs.";
         }
         return Constants.apiFailureMessage;
     }

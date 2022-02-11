@@ -4,13 +4,13 @@ public interface BaseService {
 
     void setProcessName(String processName);
 
-    void setNgMethod(String ngMethod);
+    void setAppCode(String appCode);
 
     void setWiName(String wiName);
-
-    void setCallType(String callType);
 
     void setEndpoint(String endpoint);
 
     void setAppKey(String appKey);
+
+    void setSoapAction(String soapAction);
 }

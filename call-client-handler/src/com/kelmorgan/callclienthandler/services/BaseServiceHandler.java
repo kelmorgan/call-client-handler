@@ -7,12 +7,12 @@ import java.util.regex.Pattern;
 
 public class BaseServiceHandler implements BaseService {
 
-    String processName;
-    String ngMethod;
-    String wiName;
-    String callType;
-    String endpoint;
-    String appKey;
+    protected String processName;
+    protected String appCode;
+    protected String wiName;
+    protected String endpoint;
+    protected String appKey;
+    protected String soapAction;
 
     @Override
     public void setProcessName(String processName) {
@@ -20,8 +20,8 @@ public class BaseServiceHandler implements BaseService {
     }
 
     @Override
-    public void setNgMethod(String ngMethod) {
-        this.ngMethod = ngMethod;
+    public void setAppCode(String appCode) {
+        this.appCode = appCode;
     }
 
     @Override
@@ -30,19 +30,18 @@ public class BaseServiceHandler implements BaseService {
     }
 
     @Override
-    public void setCallType(String callType) {
-        this.callType = callType;
-    }
-
-    @Override
     public void setEndpoint(String endpoint) {
         this.endpoint = endpoint;
     }
 
-
     @Override
     public void setAppKey(String appKey) {
         this.appKey = appKey;
+    }
+
+    @Override
+    public void setSoapAction(String soapAction) {
+        this.soapAction = soapAction;
     }
 
     String handler(String message) {
