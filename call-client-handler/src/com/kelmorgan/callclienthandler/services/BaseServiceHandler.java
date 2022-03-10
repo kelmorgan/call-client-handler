@@ -45,13 +45,17 @@ public class BaseServiceHandler implements BaseService {
     }
 
     String handler(String message) {
-        String newString = null;
-        String REGULAR_EXPRESSION = "(\\<MainCode>.+?\\</MainCode>)";
-        Pattern pattern = Pattern.compile(REGULAR_EXPRESSION, Pattern.DOTALL | Pattern.MULTILINE);
-        Matcher matcher = pattern.matcher(message);
-        if (matcher.find()) newString = message.replaceAll(matcher.group(1), "");
+        try {
+            String newString = null;
+            String REGULAR_EXPRESSION = "(\\<MainCode>.+?\\</MainCode>)";
+            Pattern pattern = Pattern.compile(REGULAR_EXPRESSION, Pattern.DOTALL | Pattern.MULTILINE);
+            Matcher matcher = pattern.matcher(message);
+            if (matcher.find()) newString = message.replaceAll(matcher.group(1), "");
 
-        return newString;
+            return newString;
+        } catch (Exception e){
+            return "Exception occurred in call-client-handler-jar";
+        }
     }
 
     boolean isSuccess(String mainCode) {
